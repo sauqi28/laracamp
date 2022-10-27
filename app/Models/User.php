@@ -25,7 +25,6 @@ class User extends Authenticatable
         'avatar',
         'occupation',
         'is_admin',
-        'is_admin',
     ];
 
 
