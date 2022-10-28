@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use function PHPUnit\Framework\callback;
@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            CampsBenefitSeeder::class
+            CampTableSeeder::class,
+            CampBenefitTableSeeder::class,
+            AdminUserSeeder::class,
         ]);
     }
 }
