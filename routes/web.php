@@ -54,22 +54,18 @@ Route::middleware(['auth',])->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     //user dahboard
-    Route::prefix('user/dahsboard')->namespace('User')->name('user.')->group(function(){
+    Route::prefix('user/dashboard')->namespace('User')->name('user.')->group(function () {
         Route::get('/', [UserDashboard::class, 'index'])->name('dashboard');
-
-    })
+    });
 
     //admin dahboard
-    Route::prefix('user/dahsboard')->namespace('Admin')->name('admin.')->group(function(){
+    Route::prefix('admin/dashboard')->namespace('Admin')->name('admin.')->group(function () {
         Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
-
-    })
+    });
 
 
 
     Route::get('dashboard/checkout/invoice/{camp:slug}', [CheckoutController::class, 'invoice'])->name('user.checkout.invoice');
-
-
 });
 
 // Route::get('/dashboard', function () {
