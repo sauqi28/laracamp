@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\UserController;
 use App\http\Controllers\User\CheckoutController;
 use App\http\Controllers\HomeController;
+use App\http\Controllers\User\DashboardController as UserDashboard;
+use App\http\Controllers\Admin\DashboardController as AdminDashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +53,23 @@ Route::middleware(['auth',])->group(function () {
     //user dashboard
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
+    //user dahboard
+    Route::prefix('user/dahsboard')->namespace('User')->name('user.')->group(function(){
+        Route::get('/', [UserDashboard::class, 'index'])->name('dashboard');
+
+    })
+
+    //admin dahboard
+    Route::prefix('user/dahsboard')->namespace('Admin')->name('admin.')->group(function(){
+        Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
+
+    })
+
+
+
     Route::get('dashboard/checkout/invoice/{camp:slug}', [CheckoutController::class, 'invoice'])->name('user.checkout.invoice');
+
+
 });
 
 // Route::get('/dashboard', function () {
